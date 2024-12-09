@@ -1,0 +1,45 @@
+# We import the random library in Python to generate random numbers, which is essential for
+# simulating the rolling of dice in the Craps game.
+import random
+
+# here is creation of function, which stimulates the dices to roll and returns their sum
+def roll_dice():
+    die1 = random.randint(1, 6)
+    die2 = random.randint(1, 6)
+    return die1 + die2
+
+# function which defines the algorithm of the game
+def play_craps():
+    print("Welcome to the Craps game!")
+    input("Press Enter to roll the dice...")
+
+# first roll
+    first_roll = roll_dice()
+    print(f"You rolled: {first_roll}")
+
+# Analyzing the outcome of the first roll, and defining what of each sum results in
+    if first_roll in [7, 11]:
+        print("You win!")
+        return
+    elif first_roll in [2, 3, 12]:
+        print("Craps! You lose!")
+        return
+    else:
+        goal = first_roll
+        print(f"Your goal is now {goal}. Roll again!")
+
+# Subsequent rolls
+    while True:
+        input("Press Enter to roll the dice...")
+        new_roll = roll_dice()
+        print(f"You rolled: {new_roll}")
+
+        if new_roll == goal:
+            print("You hit your goal! You win!")
+            break
+        elif new_roll == 7:
+            print("You rolled a 7. You lose!")
+            break
+
+# Start the game
+play_craps()
